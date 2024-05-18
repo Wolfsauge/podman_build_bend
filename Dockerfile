@@ -116,6 +116,9 @@ RUN pip install --no-cache-dir --upgrade pip
 RUN git config --global credential.helper cache && \
     git lfs install
 
+# Set workdir (otherwise empty mount point for disk volume in RunPod) 
+WORKDIR /workspace
+
 # Copy artifacts
 COPY --from=devel-000 /opt /opt
 
