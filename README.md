@@ -1,6 +1,6 @@
 # podman_build_bend
 
-This repo contains scripts for building [Bend](https://github.com/HigherOrderCO/Bend/).
+This repo contains scripts for building HigherOrderCO's [Bend](https://github.com/HigherOrderCO/Bend/). The GitHubActions workflow pushes it to a [Docker Hub Container Image Library](https://hub.docker.com/repository/docker/nschle/bend/) repo.
 
 ## Example run
 
@@ -11,5 +11,5 @@ $ podman run \
     --name=bend \
     --ipc=host \
     -dit \
-    localhost/podman_build_bend_bend:latest
+    docker.io/nschle/bend:gha-latest
 ```
