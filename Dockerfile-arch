@@ -21,12 +21,14 @@ RUN cp /etc/skel/.??* /root
 
 WORKDIR /workspace
 
+# Global profile authoritative for every shell
+ENV ENV /etc/profile
+
+# CUDA settings
 ENV CUDA_HOME=/opt/cuda
 ENV PATH=/opt/cuda/bin:$PATH
-ENV ENV /etc/profile
-# RUN echo 'export ENV=$HOME/.bashrc' >> "$HOME/.profile"
 
-# We want bend to live in /opt/cargo
+# Cargo directory in /opt/cargo
 ENV CARGO_HOME=/opt/cargo
 ENV PATH="/opt/cargo/bin:${PATH}"
 RUN echo -e "append_path '/opt/cargo/bin'\nexport PATH" >> /etc/profile.d/cargo.sh
