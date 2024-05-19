@@ -27,3 +27,6 @@ jobs:
         tags: |
           nschle/bend:gha-latest 
         push: ${{ github.ref == 'refs/heads/main' }}
+    - name: Summarize the Docker digest
+      run: |
+        echo 'Digest: ${{ steps.build-docker.outputs.digest }}'
