@@ -1,0 +1,60 @@
+FROM docker.io/archlinux:base as arch-build-000
+
+RUN pacman -Sy reflector --noconfirm
+
+RUN reflector --country 'Germany,France,' \
+    --latest 3 \
+    --protocol http,https \
+    --save "/etc/pacman.d/mirrorlist" \
+    --sort rate
+
+RUN pacman -S --noconfirm \
+    haskell-pid1
+
+RUN pacman -S --noconfirm \
+    extra/cuda extra/cuda-tools
+
+RUN pacman -S --noconfirm \
+    git less nvtop vi which
+
+RUN cp /etc/skel/.??* /root
+
+WORKDIR /workspace
+
+ENV CUDA_HOME=/opt/cuda
+ENV PATH=/opt/cuda/bin:$PATH
+ENV ENV /etc/profile
+# RUN echo 'export ENV=$HOME/.bashrc' >> "$HOME/.profile"
+
+# We want bend to live in /opt/cargo
+ENV CARGO_HOME=/opt/cargo
+ENV PATH="/opt/cargo/bin:${PATH}"
+RUN echo -e "append_path '/opt/cargo/bin'\nexport PATH" >> /etc/profile.d/cargo.sh
+
+## Decide, if you want either (A) or (B). The default here is to go with the
+##   archlinux method of using pacman to bootstrap the rust nightly build.
+
+# (A) Using the archlinux method of getting rustup
+RUN pacman -S --noconfirm \
+   rustup
+RUN rustup default nightly
+
+# # (B) Using the rust method of getting rustup below is working fine as well
+# ENV RUSTUP_HOME=/opt/rustup
+# RUN curl --proto '=https' --tlsv1.3 https://sh.rustup.rs -sSf | \
+#     sh -s -- -y --no-modify-path --profile default --default-toolchain nightly
+# ENV PATH="/opt/rustup/bin:${PATH}"
+
+# FIXME: This is probably a skill issue.. :)
+ENV CC=gcc CXX=g++
+RUN ln -s /opt/cuda/bin/gcc /usr/bin/cc
+
+# Install HVM
+RUN cargo +nightly install hvm
+
+# Install bend-lang
+RUN cargo +nightly install bend-lang
+
+ENTRYPOINT ["pid1"]
+
+CMD ["sleep", "infinity"]
