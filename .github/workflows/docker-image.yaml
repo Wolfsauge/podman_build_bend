@@ -20,10 +20,16 @@ jobs:
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
+    - name: Extract metadata
+      id: meta
+      uses: docker/metadata-action@v5
+      with:
+        images: ${{ env.IMAGE_NAME }}
     - name: Build image and push to Docker Hub
       uses: docker/build-push-action@v5
       with:
         context: .
-        tags: nschle/bend:gha-${{ github.sha }}
+        # tags: nschle/bend:gha-${{ github.sha }}
         provenance: mode=max
+        tags: ${{ steps.meta.outputs.tags }}
         push: ${{ github.ref == 'refs/heads/main' }}
