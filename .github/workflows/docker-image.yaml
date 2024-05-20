@@ -25,4 +25,5 @@ jobs:
       with:
         context: .
         tags: nschle/bend:gha-${{ github.sha }}
+        provenance: mode=max
         push: ${{ github.ref == 'refs/heads/main' }}
