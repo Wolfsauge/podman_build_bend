@@ -24,6 +24,5 @@ jobs:
       uses: docker/build-push-action@v5
       with:
         context: .
-        tags: |
-          nschle/bend:gha-${{ github.sha }}
+        tags: ${{ steps.meta.outputs.tags }}
         push: ${{ github.ref == 'refs/heads/main' }}
