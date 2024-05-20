@@ -27,5 +27,4 @@ jobs:
         tags: |
           # nschle/bend:gha-latest
           nschle/bend:gha-${{ github.sha }}
-        file:./Dockerfile
         push: ${{ github.ref == 'refs/heads/main' }}
