@@ -1,11 +1,7 @@
-name: Ubuntu Docker Image CI
+name: Ubuntu 22.04 Docker Image CI
 
-on: workflow_dispatch
-
-# push:
-#   branches: [ "main" ]
-#   paths:
-#     - 'Dockerfile'
+on:
+  workflow_dispatch
 
 env:
   IMAGE_NAME: nschle/bend
@@ -19,6 +15,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          sparse-checkout: .
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -39,7 +37,6 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          # tags: nschle/bend:gha-${{ github.sha }}
           provenance: mode=max
           tags: ${{ steps.meta.outputs.tags }}
-          push: ${{ github.ref == 'refs/heads/main' }}
+          push: true
