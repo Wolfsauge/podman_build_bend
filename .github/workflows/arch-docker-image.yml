@@ -37,6 +37,8 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.IMAGE_NAME }}
+          tags: |
+            type=ref,event=branch
 
       - name: Build image and push to Docker Hub
         uses: docker/build-push-action@v5
