@@ -4,12 +4,12 @@ This repo contains scripts for building Docker images of HigherOrderCO's [Bend](
 
 ## Docker Image Tags
 
-* `docker pull nschle/bend:archlinux`
+* `docker pull docker.io/nschle/bend:archlinux`
     * nvcc is provided in the image
     * big image: ~ 8 GB compressed
     * single stage build
     * based on [Arch Linux](https://hub.docker.com/_/archlinux/)
-* `docker pull nschle/bend:ubuntu-22.04`
+* `docker pull docker.io/nschle/bend:ubuntu-22.04`
     * nvcc is _not_ provided in the image
     * small image: ~ 3 GB compressed
     * 2-stage build: bend is built with the devel image, then copied to the runtime image
