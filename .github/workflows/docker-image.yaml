@@ -6,7 +6,10 @@ on: workflow_dispatch
 #   branches: [ "main" ]
 #   paths:
 #     - 'Dockerfile'
-  
+
+env:
+  IMAGE_NAME: nschle/bend
+
 jobs:
 
   build:
