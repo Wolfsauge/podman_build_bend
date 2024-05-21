@@ -1,4 +1,4 @@
-name: Ubuntu Docker Image CI
+name: Arch Docker Image CI
 
 on: workflow_dispatch
 
