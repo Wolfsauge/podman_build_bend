@@ -1,7 +1,7 @@
 name: Arch Docker Image CI
 
-on: workflow_dispatch
-  ref: arch
+on:
+  workflow_dispatch
 
 env:
   IMAGE_NAME: nschle/bend
