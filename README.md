@@ -19,7 +19,7 @@ This repo contains scripts for building Docker images of HigherOrderCO's [Bend](
    * 2-stage build: bend is built with the devel image, then copied to the runtime image
    * based on [Nvidia CUDA Ubuntu 22.04](https://hub.docker.com/r/nvidia/cuda)
 
-Both images have SBOM and provenance attestation manifests for all stages attached.
+All stages of the images have SBOM and provenance attestation manifests attached.
 
 ## Docker Hub Container Image Library
 
