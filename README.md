@@ -46,7 +46,7 @@ The workflows of this repo push their tags to this [Docker Hub repo](https://hub
 
 ## Example Usage
 
-The following commands will run the stable image using podman and GPU.
+The following commands will run the stable image using podman (version 5.0.3) and GPU. With older versions of podman the syntax to use a GPU might be different, `--gpus all` instead of `--device nvidia.com/gpu=all`.
 
 ```shell
 podman run \
