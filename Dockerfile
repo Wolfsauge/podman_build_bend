@@ -57,12 +57,12 @@ RUN echo -e '\nPATH="/opt/rust/bin:${PATH}"' >> /etc/profile.d/rust.sh
 
 # Install HVM
 # RUN cargo +nightly install hvm
-WORKDIR /workdir/HVM
+WORKDIR /workspace/HVM
 RUN cargo install --path .
 
 # Install bend-lang
 # RUN cargo +nightly install bend-lang
-WORKDIR /workdir/Bend
+WORKDIR /workspace/Bend
 RUN cargo install --path .
 
 # First stage done, switch to the runtime image
