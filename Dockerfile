@@ -53,6 +53,12 @@ RUN git config --global credential.helper cache && \
 # Do the build
 WORKDIR /workspace
 
+# Get the source repo for HVM
+RUN git clone https://github.com/HigherOrderCO/HVM.git
+
+# Get the source repo for Bend
+RUN git clone https://github.com/HigherOrderCO/Bend.git
+
 # Get rust nightly via rustup
 ENV RUSTUP_HOME=/opt/rust
 ENV CARGO_HOME=/opt/rust
