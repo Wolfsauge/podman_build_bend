@@ -10,13 +10,12 @@ The workflows of this repo push their tags to this [Docker Hub repo](https://hub
 
 * `docker pull docker.io/nschle/bend:12.4.1-runtime-ubuntu22.04-stable`
     * built with crates.io versions of HVM and Bend
-    * this is the recommended image, which contains the HVM and Bend versions, which are deemed stable by the devs
+    * this image contains the HVM and Bend versions considered stable by the developers
     * [![stable:Docker Image CI](https://github.com/Wolfsauge/podman_build_bend/actions/workflows/docker-image-ci-stable.yaml/badge.svg)](https://github.com/Wolfsauge/podman_build_bend/actions/workflows/docker-image-ci-stable.yaml) 
 
 ### Latest Image
 * `docker pull docker.io/nschle/bend:12.4.1-runtime-ubuntu22.04-latest`
     * built with the latest git versions of HVM and Bend
-    * do not use this image, unless "you know what you're doing"
     * [![latest:Docker Image CI](https://github.com/Wolfsauge/podman_build_bend/actions/workflows/docker-image-ci-latest.yaml/badge.svg)](https://github.com/Wolfsauge/podman_build_bend/actions/workflows/docker-image-ci-latest.yaml) 
 
 ### Build Notes
