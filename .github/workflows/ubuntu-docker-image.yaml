@@ -5,6 +5,7 @@ on:
     branches: ["main"]
     paths:
       - "*-latest-commit-sha.txt"
+      - "README.md"
 
 env:
   IMAGE_NAME: nschle/bend
