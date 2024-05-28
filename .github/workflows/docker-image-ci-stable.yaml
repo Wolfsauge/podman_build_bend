@@ -6,6 +6,7 @@ on:
     paths:
       - "stable/crates_io_*.txt"
       - "stable/Dockerfile"
+      - ".github/workflows/docker-image-ci-stable.yaml"
 
 env:
   IMAGE_NAME: nschle/bend
