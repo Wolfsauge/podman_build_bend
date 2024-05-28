@@ -58,12 +58,12 @@ RUN echo -e '\nPATH="/opt/rust/bin:${PATH}"' >> /etc/profile.d/rust.sh
 # Install HVM
 # RUN cargo +nightly install hvm
 WORKDIR /workdir/HVM
-RUN nohup cargo install --path .
+RUN cargo install --path .
 
 # Install bend-lang
 # RUN cargo +nightly install bend-lang
 WORKDIR /workdir/Bend
-RUN nohup cargo install --path .
+RUN cargo install --path .
 
 # First stage done, switch to the runtime image
 FROM docker.io/nvidia/cuda:12.4.1-runtime-ubuntu22.04 as runtime-000
