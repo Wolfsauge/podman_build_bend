@@ -6,6 +6,7 @@ on:
     paths:
       - "*-latest-commit-sha.txt"
       - ".github/workflows/ubuntu-docker-image.yaml"
+      - "Dockerfile"
 
 env:
   IMAGE_NAME: nschle/bend
