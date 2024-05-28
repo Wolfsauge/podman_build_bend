@@ -2,9 +2,9 @@
 
 This repo contains scripts for building Docker images of HigherOrderCO's [HVM](https://github.com/HigherOrderCO/HVM) and [Bend](https://github.com/HigherOrderCO/Bend/).
 
-## Docker Image Tags
+## Tags
 
-The workflows defined in this repo push the following tags to a Docker Hub Container Image Library [repository](https://hub.docker.com/repository/docker/nschle/bend/).
+The workflows of this repo push their tags to a [Docker Hub repo](https://hub.docker.com/repository/docker/nschle/bend/).
 
 ### Stable Image
 * `docker pull docker.io/nschle/bend:12.4.1-runtime-ubuntu22.04-stable`
