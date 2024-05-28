@@ -1,11 +1,10 @@
-name: Ubuntu 22.04 Docker Image CI
+name: Ubuntu 22.04 Docker Image CI (latest)
 
 on:
   push:
     branches: ["main"]
     paths:
       - "*-latest-commit-sha.txt"
-      - ".github/workflows/ubuntu-docker-image.yaml"
       - "Dockerfile"
 
 env:
