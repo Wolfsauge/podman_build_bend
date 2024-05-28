@@ -9,7 +9,7 @@ on:
 
 env:
   IMAGE_NAME: nschle/bend
-  BASE_IMAGE: 12.4.1-devel-ubuntu22.04
+  BASE_IMAGE: 12.4.1-runtime-ubuntu22.04
 
 jobs:
   build:
