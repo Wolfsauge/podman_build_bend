@@ -2,6 +2,8 @@
 
 This repo contains scripts for building images of [HigherOrderCO](https://github.com/HigherOrderCO)'s [HVM](https://github.com/HigherOrderCO/HVM) and [Bend](https://github.com/HigherOrderCO/Bend/).
 
+The goal is to make an isolated, CUDA-enabled environment accessible for interactive use of Bend. Example commands can be found at the end of this document.
+
 ## Tags
 
 The workflows of this repo push their tags to this [Docker Hub repo](https://hub.docker.com/repository/docker/nschle/bend/).
@@ -33,7 +35,7 @@ The workflows of this repo push their tags to this [Docker Hub repo](https://hub
 
 ## Example Usage
 
-In order to use the stable image with podman and GPU, the following commands can be used.
+The following commands will run the stable image using podman and GPU.
 
 ```shell
 podman run \
