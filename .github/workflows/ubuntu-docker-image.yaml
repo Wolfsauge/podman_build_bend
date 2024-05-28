@@ -51,6 +51,5 @@ jobs:
           context: .
           provenance: mode=max
           sbom: true
-          tags: ${{ env.IMAGE_NAME }}:${{ env.BASE_IMAGE }}
-          tags: ${{ env.IMAGE_NAME }}:latest
+          tags: ${{ env.IMAGE_NAME }}:${{ env.BASE_IMAGE }}-latest
           push: true
