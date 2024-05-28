@@ -15,7 +15,9 @@ This repo contains scripts for building Docker images of HigherOrderCO's [Bend](
     * [![latest:Docker Image CI](https://github.com/Wolfsauge/podman_build_bend/actions/workflows/docker-image-ci-latest.yaml/badge.svg)](https://github.com/Wolfsauge/podman_build_bend/actions/workflows/docker-image-ci-latest.yaml) 
 
 ### Build Notes
-* this build is based on the CUDA Ubuntu 22.04 images provided by [Nvidia](https://hub.docker.com/r/nvidia/cuda) (docker.io/nvidia/cuda:12.4.1-devel-ubuntu22.04 and docker.io/nvidia/cuda:12.4.1-runtime-ubuntu22.04)
+* this build is based on the Ubuntu images provided by [Nvidia](https://hub.docker.com/r/nvidia/cuda)
+   * docker.io/nvidia/cuda:12.4.1-devel-ubuntu22.04 (sha256:5645fec64549cc35930eee9d85aafd2b0006c0c3f22632be5a1d85e2604e9749)
+   * docker.io/nvidia/cuda:12.4.1-runtime-ubuntu22.04 (sha256:cff3a0d82d2c2b47bab252d67fa9b34a20ef4c50781d98501b5c7367ea9afd10)
 * the Dockerfiles use a 2-stage build
     * hvm and bend-lang are built with the CUDA devel image
     * hvm and bend-lang are then copied to the CUDA runtime image
