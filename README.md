@@ -5,7 +5,7 @@ This repo contains scripts for building Docker images of HigherOrderCO's [Bend](
 ## Docker Image Tags
 
 * `docker pull docker.io/nschle/bend:12.4.1-runtime-ubuntu22.04-latest`
-  * CUDA 12.4 
+  * CUDA 12.4.1
   * [![Ubuntu 22.04 Docker Image CI](https://github.com/Wolfsauge/podman_build_bend/actions/workflows/ubuntu-docker-image.yaml/badge.svg)](https://github.com/Wolfsauge/podman_build_bend/actions/workflows/ubuntu-docker-image.yaml) 
   * nvcc is _not_ provided in the image
   * small image: ~ 3 GB compressed
