@@ -55,13 +55,17 @@ RUN curl --proto '=https' --tlsv1.3 https://sh.rustup.rs -sSf | \
 ENV PATH="/opt/rust/bin:${PATH}"
 RUN echo -e '\nPATH="/opt/rust/bin:${PATH}"' >> /etc/profile.d/rust.sh
 
-# Install HVM
+# Install HVM from crates.io
 # RUN cargo +nightly install hvm
+
+# Build from source
 WORKDIR /workspace/HVM
 RUN cargo install --path .
 
-# Install bend-lang
+# Install bend-lang from crates.io
 # RUN cargo +nightly install bend-lang
+
+# Build from source
 WORKDIR /workspace/Bend
 RUN cargo install --path .
 
