@@ -1,4 +1,4 @@
-name: Check for new crates
+name: stable:Check for new crates
 on:
   schedule:
     - cron: "13,43 * * * *"

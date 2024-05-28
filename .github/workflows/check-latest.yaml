@@ -1,4 +1,4 @@
-name: Check for new commits
+name: latest:Check for new commits
 on:
   schedule:
     - cron: "23,53 * * * *"

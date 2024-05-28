@@ -1,4 +1,4 @@
-name: Ubuntu 22.04 Docker Image CI (latest)
+name: latest:Docker Image CI
 
 on:
   push:
