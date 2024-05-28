@@ -36,7 +36,7 @@ The workflows of this repo push their tags to this [Docker Hub repo](https://hub
 In order to use the stable image with podman and GPU, the following commands can be used.
 
 ```shell
-$ podman run \
+podman run \
     --replace \
     --device nvidia.com/gpu=all \
     --name=bend \
@@ -46,5 +46,5 @@ $ podman run \
 ```
 
 ```shell
-$ podman container exec -it bend bash 
+podman container exec -it bend bash 
 ```
