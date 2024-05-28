@@ -1,10 +1,15 @@
 name: Ubuntu 22.04 Docker Image CI
 
 on:
-  workflow_dispatch
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'hvm-latest-commit-sha.txt'
+      - 'bend-latest-commit-sha.txt'
 
 env:
   IMAGE_NAME: nschle/bend
+  BASE_IMAGE: 12.4.1-devel-ubuntu22.04
 
 jobs:
 
@@ -17,6 +22,13 @@ jobs:
         uses: actions/checkout@v4
         with:
           sparse-checkout: .
+
+      - name: Fail early in case of test
+        if: ${{ github.status == 'success' }}
+        run: |
+          if grep -qE '^test$' hvm-latest-commit-sha.txt bend-latest-commit-sha.txt; then
+            exit 1
+          fi
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -39,5 +51,6 @@ jobs:
           context: .
           provenance: mode=max
           sbom: true
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: ${{ env.IMAGE_NAME }}:${{ env.BASE_IMAGE }}
+          tags: ${{ env.IMAGE_NAME }}:latest
           push: true
