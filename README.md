@@ -2,7 +2,7 @@
 
 This repo contains scripts for building images of [HigherOrderCO](https://github.com/HigherOrderCO)'s [HVM](https://github.com/HigherOrderCO/HVM) and [Bend](https://github.com/HigherOrderCO/Bend/).
 
-The goal is to make an isolated, CUDA-enabled environment accessible for interactive use of Bend. Example commands can be found at the end of this document.
+The goal is to create an isolated, permanently running, CUDA-enabled environment accessible for interactive use of Bend. Example commands can be found at the end of this document.
 
 ## Tags
 
@@ -32,6 +32,17 @@ The workflows of this repo push their tags to this [Docker Hub repo](https://hub
     2. build artifacts then copied to CUDA runtime image
 * SBOM created with syft
 * provenance attestation manifests attached
+
+### Image Customizations
+
+* Yelp's [dumb-init](https://github.com/Yelp/dumb-init) for signal handling and orphan reaping
+* latest Ubuntu updates installed at image build time
+* latest git clones of HVM and Bend GitHub repositories created at image build time
+* tools typically needed for running on rented GPU nodes, compression tools and text editors
+* rsync, ssh, tmux, zsh and git
+* build-essential
+* rustup + rust nightly
+* hvm and bend-lang
 
 ## Example Usage
 
