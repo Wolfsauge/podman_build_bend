@@ -4,8 +4,8 @@ on:
   push:
     branches: ["main"]
     paths:
-      - "*-latest-commit-sha.txt"
-      - "Dockerfile"
+      - "latest/*-latest-commit-sha.txt"
+      - "latest/Dockerfile"
 
 env:
   IMAGE_NAME: nschle/bend
@@ -19,14 +19,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          sparse-checkout: .
-
-      - name: Fail early in case of test
-        if: ${{ github.status == 'success' }}
-        run: |
-          if grep -qE '^test$' hvm-latest-commit-sha.txt bend-latest-commit-sha.txt; then
-            exit 1
-          fi
+          sparse-checkout: latest
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -47,6 +40,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
+          file: latest/Dockerfile
           provenance: mode=max
           sbom: true
           tags: ${{ env.IMAGE_NAME }}:${{ env.BASE_IMAGE }}-latest
