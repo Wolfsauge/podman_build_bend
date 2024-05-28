@@ -4,8 +4,7 @@ on:
   push:
     branches: ["main"]
     paths:
-      - "hvm-latest-commit-sha.txt"
-      - "bend-latest-commit-sha.txt"
+      - "*-latest-commit-sha.txt"
 
 env:
   IMAGE_NAME: nschle/bend
