@@ -4,30 +4,21 @@ This repo contains scripts for building Docker images of HigherOrderCO's [Bend](
 
 ## Docker Image Tags
 
-* `docker pull docker.io/nschle/bend:archlinux`
-   * CUDA 12.5
-   * [![Arch Docker Image CI](https://github.com/Wolfsauge/podman_build_bend/actions/workflows/arch-docker-image.yaml/badge.svg)](https://github.com/Wolfsauge/podman_build_bend/actions/workflows/arch-docker-image.yaml)
-   * nvcc is provided in the image
-   * big image: ~ 8 GB compressed
-   * single stage build
-   * based on [Arch Linux](https://hub.docker.com/_/archlinux/)
-* `docker pull docker.io/nschle/bend:ubuntu22.04`
-   * CUDA 12.4
-   * [![Ubuntu 22.04 Docker Image CI](https://github.com/Wolfsauge/podman_build_bend/actions/workflows/ubuntu-docker-image.yaml/badge.svg)](https://github.com/Wolfsauge/podman_build_bend/actions/workflows/ubuntu-docker-image.yaml)
-   * nvcc is _not_ provided in the image
-   * small image: ~ 3 GB compressed
-   * 2-stage build: bend is built with the devel image, then copied to the runtime image
-   * based on [Nvidia CUDA Ubuntu 22.04](https://hub.docker.com/r/nvidia/cuda)
+* `docker pull docker.io/nschle/bend:12.4.1-runtime-ubuntu22.04-latest`
+  * CUDA 12.4 
+  * [![Ubuntu 22.04 Docker Image CI](https://github.com/Wolfsauge/podman_build_bend/actions/workflows/ubuntu-docker-image.yaml/badge.svg)](https://github.com/Wolfsauge/podman_build_bend/actions/workflows/ubuntu-docker-image.yaml) 
+  * nvcc is _not_ provided in the image
+  * small image: ~ 3 GB compressed
+  * 2-stage build: bend is built with the devel image, then copied to the runtime image
+  * based on [Nvidia CUDA Ubuntu 22.04](https://hub.docker.com/r/nvidia/cuda) (12.4.1-devel-ubuntu22.04 and 12.4.1-runtime-ubuntu22.04)
 
-All stages of the images have SBOM and provenance attestation manifests attached.
+All stages of the image have SBOM and provenance attestation manifests attached.
 
 ## Docker Hub Container Image Library
 
 * [Docker Hub Container Image Library](https://hub.docker.com/repository/docker/nschle/bend/)
 
-## Example run
-
-Insert your preferred TAG from above.
+## Example Usage
 
 ```shell
 $ podman run \
@@ -36,5 +27,9 @@ $ podman run \
     --name=bend \
     --ipc=host \
     -dit \
-    docker.io/nschle/bend:TAG
+    docker.io/nschle/bend:12.4.1-runtime-ubuntu22.04-latest
+```
+
+```shell
+$ podman container exec -it bend bash 
 ```
