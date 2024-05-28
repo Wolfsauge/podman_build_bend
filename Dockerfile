@@ -7,13 +7,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     curl \
     ca-certificates \
-    python3.11 \
-    python3-pip \
     git \
     ssh \
     7zip \
     iputils-ping \
-    git-lfs \
     less \
     net-tools \
     nvi \
@@ -38,17 +35,8 @@ RUN apt-get upgrade -y
 # Install dumb-init
 RUN apt-get install -y dumb-init
 
-# Change global Python
-RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 1 \
-    && apt-get install -y --no-install-recommends python-is-python3 \
-    && rm -rf /var/lib/apt/lists/*
-
-# Upgrade pip
-RUN pip install --no-cache-dir --upgrade pip
-
-# Set up git to support LFS, and to cache credentials; useful for Huggingface Hub
-RUN git config --global credential.helper cache && \
-    git lfs install
+# Set up git to cache credentials; useful for Huggingface Hub
+RUN git config --global credential.helper cache
 
 # Do the build
 WORKDIR /workspace
@@ -81,13 +69,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     curl \
     ca-certificates \
-    python3.11 \
-    python3-pip \
     git \
     ssh \
     7zip \
     iputils-ping \
-    git-lfs \
     less \
     net-tools \
     nvi \
@@ -112,23 +97,16 @@ RUN apt-get upgrade -y
 # Install dumb-init
 RUN apt-get install -y dumb-init
 
-# Change global Python
-RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 1 \
-    && apt-get install -y --no-install-recommends python-is-python3 \
-    && rm -rf /var/lib/apt/lists/*
-
-# Upgrade pip
-RUN pip install --no-cache-dir --upgrade pip
-
-# Set up git to support LFS, and to cache credentials; useful for Huggingface Hub
-RUN git config --global credential.helper cache && \
-    git lfs install
+# Set up git to cache credentials; useful for Huggingface Hub
+RUN git config --global credential.helper cache
 
 # Set workdir (otherwise empty mount point for disk volume in RunPod) 
 WORKDIR /workspace
 
 # Copy artifacts
 COPY --from=devel-000 /opt /opt
+COPY --from=devel-000 /workspace/HVM /workspace/HVM
+COPY --from=devel-000 /workspace/Bend /workspace/Bend
 
 # Setup runtime rust nightly environment with previously built artifacts
 ENV RUSTUP_HOME=/opt/rust
