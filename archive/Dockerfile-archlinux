@@ -55,11 +55,7 @@ RUN rustup default nightly
 #
 # News:
 # - Arch Linux now comes with CUDA 12.5
-# - which was built with gcc v14
-# - which is was supported in CUDA 12.4
-# - the gcc-13 Arch Linux currently comes with, can't produce working CUDA binaries
-# - thus I changed the Dockerfile to install core/gcc above and to try to build hvm/bend with it
-# - until Arch Linux has fixed all issues, this will fail
+# - atm. I can't build hvm and bend with it
 
 # Install HVM
 RUN cargo +nightly install hvm
