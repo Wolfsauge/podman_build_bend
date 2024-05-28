@@ -2,19 +2,17 @@ name: Ubuntu 22.04 Docker Image CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
     paths:
-      - 'hvm-latest-commit-sha.txt'
-      - 'bend-latest-commit-sha.txt'
+      - "hvm-latest-commit-sha.txt"
+      - "bend-latest-commit-sha.txt"
 
 env:
   IMAGE_NAME: nschle/bend
   BASE_IMAGE: 12.4.1-devel-ubuntu22.04
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     steps:

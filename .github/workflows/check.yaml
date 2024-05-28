@@ -1,7 +1,7 @@
 name: Check for new commits
 on:
   schedule:
-    - cron:  "23,53 * * * *"
+    - cron: "23,53 * * * *"
 
 jobs:
   get-version:
