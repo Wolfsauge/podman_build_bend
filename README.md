@@ -1,6 +1,6 @@
 # podman_build_bend
 
-This repo contains scripts for building images of HigherOrderCO's [HVM](https://github.com/HigherOrderCO/HVM) and [Bend](https://github.com/HigherOrderCO/Bend/).
+This repo contains scripts for building images of [HigherOrderCO](https://github.com/HigherOrderCO)'s [HVM](https://github.com/HigherOrderCO/HVM) and [Bend](https://github.com/HigherOrderCO/Bend/).
 
 ## Tags
 
