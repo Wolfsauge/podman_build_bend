@@ -8,9 +8,9 @@ The goal is to create an isolated, permanently running, CUDA-enabled environment
 
 The images produced are not supposed to be run in a production scenario or as a cluster deployment. They purposefully violate the philosophy of running more than one process in one container etc., in order to facilitate a legacy VM pattern use case instead. SSH is included to facilitate running the image on rented GPU nodes.
 
-To use CUDA functions of this image and to follow the example, it's required to run the image on a working Docker or podman setup, which has access to an Nvidia GPU. The image has been used successfully on Linux 6.6.32 using glibc.
+To use CUDA functions and to follow the example, it's required to run the images on a working Docker or podman setup, which has access to an Nvidia GPU. The image has been used successfully on Linux 6.6.32, glibc and the Nvidia driver version 550.78.
 
-The build process does not include any tests, especially no tests of the CUDA functions are done. :construction:
+:construction: The build process does not include any tests, especially no tests of the CUDA functions. Compile a [minimal CUDA program](https://gist.github.com/dpiponi/1502434) using the -devel image, if you want to troubleshoot your setup.
 
 ## Tags
 
@@ -18,7 +18,7 @@ The workflows of this repo push their tags to this [Docker Hub repo](https://hub
 
 ### Stable Image
 
-If you want to try out HVM and Bend.
+If you want to try out HVM and Bend, use this image.
 
 * `docker pull docker.io/nschle/bend:12.4.1-runtime-ubuntu22.04-stable`
     * built with crates.io versions of HVM and Bend
@@ -27,7 +27,7 @@ If you want to try out HVM and Bend.
 
 ### Devel Image
 
-If you are missing nvcc to compile CUDA binaries, use this image.
+This image includes nvcc and can compile CUDA binaries.
 
 * `docker pull docker.io/nschle/bend:12.4.1-devel-ubuntu22.04-devel`
    * built with crates.io versions of HVM and Bend
