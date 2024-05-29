@@ -4,16 +4,33 @@ This repo contains scripts for building images of [HigherOrderCO](https://github
 
 The goal is to create an isolated, permanently running, CUDA-enabled environment accessible for interactive use of Bend. Example commands can be found at the end of this document.
 
+## Disclaimer and Scope
+
+To use CUDA functions of this image and to follow the example, it's required to run the image on a working Docker or podman setup, which has access to an Nvidia GPU. The image has been used successfully on Linux 6.6.32 using glibc.
+
 ## Tags
 
 The workflows of this repo push their tags to this [Docker Hub repo](https://hub.docker.com/repository/docker/nschle/bend/).
 
 ### Stable Image
 
+If you want to try out HVM and Bend.
+
 * `docker pull docker.io/nschle/bend:12.4.1-runtime-ubuntu22.04-stable`
     * built with crates.io versions of HVM and Bend
     * this image contains the HVM and Bend versions considered stable by the developers
     * [![stable:Docker Image CI](https://github.com/Wolfsauge/podman_build_bend/actions/workflows/docker-image-ci-stable.yaml/badge.svg)](https://github.com/Wolfsauge/podman_build_bend/actions/workflows/docker-image-ci-stable.yaml) 
+
+### Devel Image
+
+If you are missing nvcc to compile CUDA binaries, use this image.
+
+* `docker pull docker.io/nschle/bend:12.4.1-devel-ubuntu22.04-devel`
+   * built with crates.io versions of HVM and Bend
+   * this image contains the HVM and Bend versions considered stable by the developers
+   * additionally nvcc is contained
+   * bigger image: ~ 4.3 GB compressed
+   * [![devel:Docker Image CI](https://github.com/Wolfsauge/podman_build_bend/actions/workflows/docker-image-ci-devel.yaml/badge.svg)](https://github.com/Wolfsauge/podman_build_bend/actions/workflows/docker-image-ci-devel.yaml)   
 
 ### Latest Image
 * `docker pull docker.io/nschle/bend:12.4.1-runtime-ubuntu22.04-latest`
@@ -25,7 +42,7 @@ The workflows of this repo push their tags to this [Docker Hub repo](https://hub
 * based on the CUDA Ubuntu images provided by [Nvidia](https://hub.docker.com/r/nvidia/cuda)
    * docker.io/nvidia/cuda:12.4.1-devel-ubuntu22.04 `sha256:5645fec64549cc35930eee9d85aafd2b0006c0c3f22632be5a1d85e2604e9749`
    * docker.io/nvidia/cuda:12.4.1-runtime-ubuntu22.04 `sha256:cff3a0d82d2c2b47bab252d67fa9b34a20ef4c50781d98501b5c7367ea9afd10`
-* nvcc _not_ included in the images
+* nvcc _not_ included in the images, except the devel image
 * aiming to produce small images: ~ 2.6 GB compressed
 * two-stage build process:
     1. hvm and bend-lang built with CUDA devel image
