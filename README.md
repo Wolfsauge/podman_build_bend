@@ -61,3 +61,27 @@ podman run \
 ```shell
 podman container exec -it bend bash 
 ```
+## Comparing Results
+
+Once inside the _stable_ container, running the `fib.bend` example twice looks like this on a RTX 3090, Intel 12900K, DDR4 system.
+
+```shell
+$ podman container exec -it bend bash
+root@ac22717a0d2c:/workspace# time bend run-cu Bend/examples/fib.bend 
+Result: 832040
+
+real    0m4.203s
+user    0m4.037s
+sys     0m0.157s
+root@ac22717a0d2c:/workspace# time bend run-cu Bend/examples/fib.bend 
+Result: 832040
+
+real    0m0.104s
+user    0m0.021s
+sys     0m0.081s
+root@ac22717a0d2c:/workspace#
+```
+
+![Screenshot](archive/Screenshot_20240529_122615.png "Screenshot")
+
+Last changed: 2024-05-29, Wolfsauge
