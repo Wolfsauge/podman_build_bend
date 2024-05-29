@@ -2,7 +2,7 @@
 
 This repo contains scripts for building images of [HigherOrderCO](https://github.com/HigherOrderCO)'s [HVM](https://github.com/HigherOrderCO/HVM) and [Bend](https://github.com/HigherOrderCO/Bend/).
 
-The goal is to create an isolated, permanently running, CUDA-enabled environment for interactive use of Bend. Example commands to bring up a container can be found at the end of this document. The Bend examples are included in the image.
+The goal is to create an isolated, permanently running, CUDA-enabled environment for interactive use of Bend. Example commands to bring up a container can be found at the end of this document. The images include git clones of the HVM and Bend repos.
 
 ## Disclaimer and Scope
 
