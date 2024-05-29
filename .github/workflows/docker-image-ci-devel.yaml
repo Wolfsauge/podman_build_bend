@@ -4,6 +4,7 @@ on:
   push:
     branches: ["main"]
     paths:
+      - "stable/crates_io_*.txt"
       - "devel/Dockerfile"
       - ".github/workflows/docker-image-ci-devel.yaml"
 
