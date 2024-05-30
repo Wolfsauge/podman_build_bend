@@ -4,14 +4,6 @@ This repo contains scripts for building images of [HigherOrderCO](https://github
 
 The goal is to create an isolated, permanently running, CUDA-enabled environment for interactive use of Bend. Example commands to bring up a container can be found at the end of this document. The images include git clones of the HVM and Bend repos.
 
-## Disclaimer and Scope
-
-The images produced are not supposed to be run in a production scenario or as a cluster deployment. They purposefully violate the philosophy of running more than one process in one container etc., in order to facilitate a legacy VM pattern use case instead. SSH is included to facilitate running the image on rented GPU nodes.
-
-To use CUDA functions and to follow the example, it's required to run the images on a working Docker or podman setup, which has access to an Nvidia GPU. The image has been used successfully on Linux 6.6.32, glibc and the Nvidia driver version 550.78.
-
-:construction: The build process does not include any tests, especially no tests of the CUDA functions. Compile a [minimal CUDA program](https://gist.github.com/dpiponi/1502434) using the -devel image, if you want to troubleshoot your setup.
-
 ## Tags
 
 The workflows of this repo push their tags to this [Docker Hub repo](https://hub.docker.com/repository/docker/nschle/bend/).
@@ -104,5 +96,13 @@ root@ac22717a0d2c:/workspace#
 ```
 
 ![Screenshot](archive/Screenshot_20240529_122615.png "Screenshot")
+
+## Disclaimer and Scope
+
+The images produced are not supposed to be run in a production scenario or as a cluster deployment. They purposefully violate the philosophy of running more than one process in one container etc., in order to facilitate a legacy VM pattern use case instead. SSH is included to facilitate running the image on rented GPU nodes.
+
+To use CUDA functions and to follow the example, it's required to run the images on a working Docker or podman setup, which has access to an Nvidia GPU. The image has been used successfully on Linux 6.6.32, glibc and the Nvidia driver version 550.78.
+
+:construction: The build process does not include any tests, especially no tests of the CUDA functions. Compile a [minimal CUDA program](https://gist.github.com/dpiponi/1502434) using the -devel image, if you want to troubleshoot your setup.
 
 Last changed: 2024-05-29, Wolfsauge
