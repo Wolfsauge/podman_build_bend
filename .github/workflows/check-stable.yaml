@@ -19,7 +19,6 @@ jobs:
           curl -sLC - https://crates.io/api/v1/crates/bend-lang | \
           jq '.crate.max_stable_version, .crate.max_version' > stable/crates_io_bend-lang.txt
       - name: Fail early in case of API null response
-        if: ${{ github.status == 'success' }}
         run: |
           if grep -qE '^null$' stable/crates_io_hvm.txt stable/crates_io_bend-lang.txt; then
             exit 1
