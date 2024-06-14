@@ -13,14 +13,14 @@ jobs:
       - name: Fetch latest HVM commit checksum from GitHub API
         run: |
           curl -sL https://api.github.com/repos/HigherOrderCO/HVM/commits | \
-          jq ".[0] | .sha" > hvm-latest-commit-sha.txt
+          jq ".[0] | .sha" > latest/hvm-latest-commit-sha.txt
       - name: Fetch latest Bend commit checksum from GitHub API
         run: |
           curl -sL https://api.github.com/repos/HigherOrderCO/Bend/commits | \
-          jq ".[0] | .sha" > bend-latest-commit-sha.txt
+          jq ".[0] | .sha" > latest/bend-latest-commit-sha.txt
       - name: Fail early in case of API null response
         run: |
-          if grep -qE '^null$' hvm-latest-commit-sha.txt bend-latest-commit-sha.txt; then
+          if grep -qE '^null$' latest/hvm-latest-commit-sha.txt latest/bend-latest-commit-sha.txt; then
             exit 1
           fi
       - name: Check if latest commit checksums changed
